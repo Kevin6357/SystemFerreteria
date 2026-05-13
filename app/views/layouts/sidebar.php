@@ -27,14 +27,35 @@
             <a href="<?php echo BASE_URL; ?>/dashboard"
                 class="<?php echo $rutaActual === 'dashboard' ? 'activo' : ''   ; ?>" >
                 <i class="fa-solid fa-house"></i>
-                <span>Inicio</span>
+                <span>Dashboard</span>
             </a>
         </li>
         <li>
-            <a href="<?php echo BASE_URL; ?>/empleados"
-                class="<?php echo $rutaActual === 'empleados' ? 'activo' : ''; ?>"> 
-                <i class="fa-solid fa-clipboard-list"></i>
-                <span>Reportes</span>
+            <a href="<?php echo BASE_URL; ?>/compras"
+                class="<?php echo $rutaActual === 'compras' ? 'activo' : ''; ?>"> 
+                 <i class="fa-solid fa-cart-shopping"></i>
+                <span>Compras</span>
+            </a>
+        </li>
+               <li>
+            <a href="<?php echo BASE_URL; ?>/recibidos"
+                class="<?php echo $rutaActual === 'recibidos' ? 'activo' : ''; ?>"> 
+                <i class="fa-solid fa-box-open"></i>
+                <span>Recibidos</span>
+            </a>
+        </li>
+               <li>
+            <a href="<?php echo BASE_URL; ?>/devoluciones"
+                class="<?php echo $rutaActual === 'devoluciones' ? 'activo' : ''; ?>"> 
+                <i class="fa-solid fa-rotate-left"></i>
+                <span>Devoluciones</span>
+            </a>
+        </li>
+               <li>
+            <a href="<?php echo BASE_URL; ?>/stocks"
+                class="<?php echo $rutaActual === 'stocks' ? 'activo' : ''; ?>"> 
+                <i class="fa-solid fa-warehouse"></i>
+                <span>Stocks</span>
             </a>
         </li>
         <li class="nav-logout">

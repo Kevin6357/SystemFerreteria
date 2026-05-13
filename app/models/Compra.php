@@ -1,8 +1,8 @@
 <?php 
 //Llamamos a la conexión de la base de datos.
 require_once __DIR__ . '/../core/Database.php';
-//Creamos el modelo o clase llamada Empleado (SINGULAR).
-class Empleado{
+//Creamos el modelo o clase llamada Compra (SINGULAR).
+class Compra{
     // La propiedad $db guardará la conexión PDO.
     // Le decimos que solo puede ser de tipo PDO (tipado estricto).
     // modificador de acceso("private") significa que solo se puede usar dentro de esta clase.
@@ -14,11 +14,11 @@ class Empleado{
         // Al guardarla en $this->db, cualquier método de esta clase puede usarla.
         $this->db = Database::getConnection();
     }
-    //Creamos el modulo para llamar todo los datos de la tabla EMPLEADOS
+    //Creamos el modulo para llamar todo los datos de la tabla COMPRAS
     //public function getAll():array
-    public function obtenerEmpleados():array {
+    public function obtenerCompras():array {
         // variable $sql para almacenar
-        $sql = "SELECT * FROM empleado";
+        $sql = "SELECT * FROM compras";
         // statement = declaración
         $stmt = $this->db->prepare($sql);
         // Ejecutamos la declaración ($stmt)

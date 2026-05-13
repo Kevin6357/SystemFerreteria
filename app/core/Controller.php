@@ -20,3 +20,4 @@ class Controller {
         require_once __DIR__ . '/../views/' . $vista . '.php';
     }
 }
+            

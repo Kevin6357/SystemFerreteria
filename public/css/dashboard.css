@@ -24,7 +24,7 @@ body {
     color: var(--text);
 }
 
-/* ─── TOPBAR (móvil) ─────────────────────────────── */
+/* TOPBAR (móvil) */
 .topbar {
     display: flex;
     align-items: center;
@@ -105,7 +105,7 @@ body {
         text-align: center;
 }
 
-/* ─── NAV LINKS ──────────────────────────────────── */
+/*  NAV LINKS  */
 .sidebar ul {
     list-style: none;
     flex: 1;
