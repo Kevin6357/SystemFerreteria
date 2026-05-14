@@ -37,7 +37,7 @@
 
                     <thead class="table-dark">
                         <tr>
-                            <th>ID</th>
+                            <th>id_recibido</th>
                             <th>id_compra</th>
                             <th>fecha_recibido</th>
                             <th>estado</th>
@@ -49,7 +49,7 @@
                         <?php foreach($compras as $compritas): ?>
 
                             <tr>
-                                <td><?php echo $compritas['id']; ?></td>
+                                <td><?php echo $compritas['id_recibido']; ?></td>
                                 <td><?php echo $compritas['id_compra']; ?></td>
                                 <td><?php echo htmlspecialchars($compritas['fecha_recibido']); ?></td>
                                 <td><?php echo htmlspecialchars($compritas['estado']); ?></td>

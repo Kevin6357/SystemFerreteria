@@ -58,6 +58,13 @@
                 <span>Stocks</span>
             </a>
         </li>
+               <li>
+            <a href="<?php echo BASE_URL; ?>/proveedores"
+                class="<?php echo $rutaActual === 'proveedores' ? 'activo' : ''; ?>"> 
+                <i class="fa-solid fa-boxes-packing"></i>
+                <span>Proveedores</span>
+            </a>
+        </li>
         <li class="nav-logout">
             <a href="<?php echo BASE_URL; ?>/logout" id="btn-logout">
                 <i class="fa-solid fa-right-from-bracket"></i>

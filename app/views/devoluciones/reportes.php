@@ -37,10 +37,9 @@
 
                     <thead class="table-dark">
                         <tr>
-                            <th>ID</th>
-                            <th>id_Producto</th>
+                            <th>id_devoluciones</th>
+                            <th>id_compra</th>
                             <th>motivo</th>
-                            <th>cantidad</th>
                             <th>fecha_Devolucion</th>
                         </tr>
                     </thead>
@@ -51,9 +50,8 @@
 
                             <tr>
                                 <td><?php echo $devolucion['id_devolucion']; ?></td>
-                                <td><?php echo $devolucion['id_producto']; ?></td>
+                                <td><?php echo $devolucion['id_compra']; ?></td>
                                 <td><?php echo htmlspecialchars($devolucion['motivo']); ?></td>
-                                <td><?php echo htmlspecialchars($devolucion['cantidad']); ?></td>
                                 <td><?php echo htmlspecialchars($devolucion['fecha_devolucion']); ?></td>
                             </tr>
 
