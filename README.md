@@ -77,12 +77,11 @@ Los tres casos se pueden resolver con un sistema de seguimiento en tiempo real q
 CREATE DATABASE ferre_bayron;
 USE ferre_bayron;
 
-CREATE TABLE usuarios (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    nombre VARCHAR(100) NOT NULL,
-    usuario VARCHAR(50) NOT NULL UNIQUE,
-    password VARCHAR(255) NOT NULL,
-    rol VARCHAR(30) NOT NULL
+create table usuario(
+id_usuario int auto_increment primary key,
+roles enum('admin', 'superadmin') default 'admin',
+nombre_usuario varchar (150) not null,
+clave varchar(250) not null
 );
 
 CREATE TABLE proveedores (
@@ -92,66 +91,60 @@ CREATE TABLE proveedores (
     direccion VARCHAR(150)
 );
 
-CREATE TABLE productos (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    nombre VARCHAR(100) NOT NULL,
-    descripcion TEXT,
-    precio DECIMAL(10,2) NOT NULL,
-    stock INT NOT NULL,
-    fecha_registro DATETIME DEFAULT CURRENT_TIMESTAMP
-);
-
-	CREATE TABLE compras (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    proveedor_id INT,
-    fecha_compra DATETIME DEFAULT CURRENT_TIMESTAMP,
-    total DECIMAL(10,2),
-
-    FOREIGN KEY (proveedor_id)
-    REFERENCES proveedores(id)
-);
-
-CREATE TABLE detalle_compras (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    compra_id INT,
-    producto_id INT,
-    cantidad INT NOT NULL,
-    precio_unitario DECIMAL(10,2),
-    
-    FOREIGN KEY (compra_id)
-    REFERENCES compras(id),
-
-    FOREIGN KEY (producto_id)
-    REFERENCES productos(id)
+CREATE TABLE compras (
+    id_compra INT AUTO_INCREMENT PRIMARY KEY,
+    id_proveedor INT NOT NULL,
+    fecha_compra DATE NOT NULL,
+    total DECIMAL(10,2) NOT NULL,
+    FOREIGN KEY (id_proveedor) REFERENCES proveedores(id)
 );
 
 CREATE TABLE recibidos (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    compra_id INT,
-    fecha_recibido DATETIME DEFAULT CURRENT_TIMESTAMP,
-    estado VARCHAR(30),
-
-    FOREIGN KEY (compra_id)
-    REFERENCES compras(id)
+    id_recibido INT AUTO_INCREMENT PRIMARY KEY,
+    id_compra INT NOT NULL,
+    fecha_recibido DATE NOT NULL,
+    estado VARCHAR(50),
+    FOREIGN KEY (id_compra) REFERENCES compras(id_compra)
 );
 
 CREATE TABLE devoluciones (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    producto_id INT,
-    motivo TEXT,
-    cantidad INT,
-    fecha_devolucion DATETIME DEFAULT CURRENT_TIMESTAMP,
-
-    FOREIGN KEY (producto_id)
-    REFERENCES productos(id)
+    id_devolucion INT AUTO_INCREMENT PRIMARY KEY,
+    id_compra INT NOT NULL,
+    motivo VARCHAR(200),
+    fecha_devolucion DATE NOT NULL,
+    FOREIGN KEY (id_compra) REFERENCES compras(id_compra)
 );
 
-INSERT INTO usuarios(nombre,usuario,password,rol)
-VALUES ('Administrador','admin','123456','Administrador');
+CREATE TABLE stocks (
+    id_stock INT AUTO_INCREMENT PRIMARY KEY,
+    producto VARCHAR(100) NOT NULL,
+    cantidad INT NOT NULL,
+    precio DECIMAL(10,2) NOT NULL
+);
+
 
 INSERT INTO proveedores(nombre,telefono,direccion)
-VALUES ('Proveedor Central','999999999','Pucallpa');
+VALUES
+('Juan','987654321','Pucallpa'),
+('Carlos','999888777','Lima');
 
-INSERT INTO productos(nombre,descripcion,precio,stock)
-VALUES ('Martillo','Herramienta de golpe',25.00,50);
+INSERT INTO compras(id_proveedor,fecha_compra,total)
+VALUES
+(1,'2026-01-12',250.00),
+(2,'2026-01-15',500.00);
+
+INSERT INTO recibidos(id_compra,fecha_recibido,estado)
+VALUES
+(1,'2026-01-13','Recibido'),
+(2,'2026-01-16','Pendiente');
+
+INSERT INTO devoluciones(id_compra,motivo,fecha_devolucion)
+VALUES
+(1,'Producto defectuoso','2026-01-14');
+
+INSERT INTO stocks(producto,cantidad,precio)
+VALUES
+('Martillo',50,25.00),
+('Taladro',20,180.00),
+('Destornillador',100,12.00);
 ```
