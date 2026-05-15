@@ -255,14 +255,20 @@ body {
 }
 
 /* Video */
-.hero-video {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: 1;
-    will-change: transform;
+.hero-video{
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    z-index:-1;
+}
+
+.stage{
+    position:relative;
+    height:100vh;
+    overflow:hidden;
 }
 
 /* Parallax del video con scroll-driven (Chrome/Edge 115+, Firefox 110+, Safari 17.5+) */
